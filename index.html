@@ -21,7 +21,7 @@
 </div>
 
 <script>
-    let pokemonA = {
+    let charizard = {
         name: "charizard",
         hp: 201,
         level: 68,
@@ -29,7 +29,7 @@
         defense: 90,
     }
 
-    let pokemonB = {
+    let gengar = {
         name: "gengar",
         hp: 189,
         level: 65,
@@ -37,17 +37,19 @@
         defense: 80,
     }
 
-    let startBattle = function () {
+    let startBattle = function (pokemonA, pokemonB) {
         let battle = {
             isFinished: false,
+            pokemonA: pokemonA,
+            pokemonB,
         }
         return battle 
     }
 
     // This is a comment, it doesn't do anything
-    let attack = function (damageAmount) {
-        return "dealt " + damageDealt(pokemonC, pokemonB) + " damage"
-    }
+    // let attack = function (damageAmount) {
+    //     return "dealt " + damageDealt(pokemonC, pokemonB) + " damage"
+    // }
 
     // let damageDealt = function (a, b) {
     //     return a.attack - b.defense
