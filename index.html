@@ -25,14 +25,14 @@
     let flamethrower = {
         name: "Flamethrower",
         type: "fire",
-        effect: function(attacker, defender) {
+        effect: function (attacker, defender) {
             defender.temp.hp -= calcSpecialDamage(attacker, defender, 80)
         },
         accuracy: 100,
         pp: 15,
     }
 
-    let calcPhysicalDamage = function(attacker, defender, attackPower) {
+    let calcPhysicalDamage = function (attacker, defender, attackPower) {
         let attackStat = attacker.attack * attacker.temp.attack
         let defenseStat = defender.defense * defender.temp.defense
         let randomNumber = 85 // TODO randomize between 85 and 100
@@ -42,7 +42,7 @@
         return ((((2 * attacker.level / 5 + 2) * attackStat * attackPower / defenseStat) / 50) + 2) * STAB * weakness / resistance * randomNumber / 100
     }
 
-    let calcSpecialDamage = function(attacker, defender, attackPower) {
+    let calcSpecialDamage = function (attacker, defender, attackPower) {
         let attackStat = attacker.spAttack * attacker.temp.spAttack
         let defenseStat = defender.spDefense * defender.temp.spDefense
         let randomNumber = 85 // TODO randomize between 85 and 100
@@ -56,7 +56,7 @@
         name: "Dragon Claw",
         type: "dragon",
         category: "attack",
-        effect: function(attacker, defender) {
+        effect: function (attacker, defender) {
             defender.temp.hp -= calcPhysicalDamage(attacker, defender, 80)
         },
         accuracy: 100,
@@ -66,7 +66,7 @@
     let smokescreen = {
         name: "Smokescreen",
         type: "normal",
-        effect: function(attacker, defender) {
+        effect: function (attacker, defender) {
             if (defender.accuracy > 0.4) {
                 defender.accuracy -= 0.1;
             }
@@ -80,31 +80,23 @@
     let shadowball = {
         name: "Shadow Ball",
         type: "ghost",
-        effect: function(attacker, defender) {
+        effect: function (attacker, defender) {
             defender.temp.hp -= calcSpecialDamage(attacker, defender, 80)
         },
         accuracy: 100,
         pp: 15,
     }
 
-    let temporaryStats = {
-        hp: 200,
-        acc: 100,
-        evasiveness: 1.0,
-        attack: 1.0,
-        defense: 1.0,
-        spAttack: 1.0,
-        spDefense: 1.0,
-        speed: 1.0,
-    }
+ 
+
 
     let charizard = {
         name: "charizard",
         type: ["fire", "flying"],
         moves: [
-           flamethrower,
-           dragonClaw,
-           smokescreen,
+            flamethrower,
+            dragonClaw,
+            smokescreen,
         ],
         hp: 78,
         attack: 84,
@@ -113,7 +105,7 @@
         spDefense: 85,
         speed: 100,
     }
-    
+
     let gengar = {
         name: "gengar",
         type: ["ghost", "poison"],
@@ -133,14 +125,26 @@
         charizard,
     ]
 
+    let teamB = [
+        gengar,
+    ]
+
     let startBattle = function (teamA, teamB) {
+        let activeA = teamA[0]
+        let activeB = teamB[0]
+
+        activeA.temp = defaultTempStats(activeA)
+        activeB.temp = defaultTempStats(activeB)
+        
         let battle = {
             isFinished: false,
             teamA,
             teamB,
+            activeA,
+            activeB,
         }
 
-        return battle 
+        return battle
     }
 
     // This is a comment, it doesn't do anything
@@ -160,6 +164,19 @@
     // pokemonBName.innerText = pokemonB.name + " " + pokemonB.hp
     // document.body.appendChild(pokemonBName)
 
+    let defaultTempStats = function (pokemon) {
+        return {
+            hp: pokemon.hp,
+            acc: 100,
+            evasiveness: 1.0,
+            attack: 1.0,
+            defense: 1.0,
+            spAttack: 1.0,
+            spDefense: 1.0,
+            speed: 1.0,
+        }
+
+    }
 
 </script>
 <p> bulbasaur </p>
