@@ -3,101 +3,64 @@
 <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
 
 <style>
-	.selected {
-		color: red;
-		font-family: 'Creepster', cursive;
-	}
+    .selected {
+        color: red;
+        font-family: 'Creepster', cursive;
+    }
 
-	div,
-	p {
-		font-family: 'Creepster', cursive;
-		color: green;
-	}
+    div,
+    p {
+        font-family: 'Creepster', cursive;
+        color: green;
+    }
 </style>
 
 <div>
-	<div class="selected"> moves </div>
-	<div> items </div>
+    <div class="selected"> moves </div>
+    <div> items </div>
 </div>
 
 <script>
-	let name = "bulbasaur"
-	let hp = 30
-	let isCaptured = false
-
-	let pokemonA = {
-		name: "charizard",
-		hp: 201,
-		level: 68,
-		attack: 100,
-		defense: 90,
-	}
-	let pokemonB = {
-		name: "gengar",
-		hp: 189,
-		level: 65,
-		attack: 100,
-		defense: 80,
-	}
-
-	let pokemonC = {
-		name: "Slowbro",
-		hp: 240,
-		level: 70,
-		attack: 200,
-		defense: 10,
-	}
-
-	let attack = function (damageAmount) {
-		return "dealt " + damageDealt(pokemonC, pokemonB) + " damage"
-	}
-
-  let toaster = function(keyboardEvent) {
-    console.log(keyboardEvent);
-
-    let charmander = {
-      name: 'charmander',
-      hp: 5,
-      level: keyboardEvent,
+    let pokemonA = {
+        name: "charizard",
+        hp: 201,
+        level: 68,
+        attack: 100,
+        defense: 90,
     }
 
-    let squirtle = {
-      name: 'squirtle',
-      hp: 5,
-      level: keyboardEvent,
+    let pokemonB = {
+        name: "gengar",
+        hp: 189,
+        level: 65,
+        attack: 100,
+        defense: 80,
     }
 
-    if (keyboardEvent.key == 'ArrowUp') {
-      console.log(squirtle)
-      return squirtle;
-    }
-
-    console.log(charmander)
-    return charmander;
-  }
-
-  let addTwoNums = function(n1, n2) {
-    return n1 + n2;
-  }
-
-	let damageDealt = function (a, b) {
-		return a.attack - b.defense
-	}
-
-	let pokemonAName = document.createElement("p")
-	pokemonAName.innerText = attack(pokemonA.attack)
-	document.body.appendChild(pokemonAName)
-
-	let pokemonBName = document.createElement("p")
-	pokemonBName.innerText = pokemonB.name + " " + pokemonB.hp
-	document.body.appendChild(pokemonBName)
-
-    let handleKeypress = function (event) {
-        if (event.key == "ArrowDown") {
-            console.log (event)
+    let startBattle = function () {
+        let battle = {
+            isFinished: false,
         }
+        return battle 
     }
 
-    document.body.addEventListener("keydown", toaster)
+    // This is a comment, it doesn't do anything
+    let attack = function (damageAmount) {
+        return "dealt " + damageDealt(pokemonC, pokemonB) + " damage"
+    }
+
+    // let damageDealt = function (a, b) {
+    //     return a.attack - b.defense
+    // }
+
+    // let pokemonAName = document.createElement("p")
+    // pokemonAName.innerText = attack(pokemonA.attack)
+    // document.body.appendChild(pokemonAName)
+
+    // let pokemonBName = document.createElement("p")
+    // pokemonBName.innerText = pokemonB.name + " " + pokemonB.hp
+    // document.body.appendChild(pokemonBName)
+
+
 </script>
 <p> bulbasaur </p>
