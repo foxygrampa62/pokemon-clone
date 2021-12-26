@@ -1,66 +1,103 @@
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
 
 <style>
-  .selected {
-    color: red;
-    font-family: 'Creepster', cursive;
-  }
-  div, p {
-    font-family: 'Creepster', cursive;
-    color: green;
-  }
+	.selected {
+		color: red;
+		font-family: 'Creepster', cursive;
+	}
+
+	div,
+	p {
+		font-family: 'Creepster', cursive;
+		color: green;
+	}
 </style>
 
 <div>
-  <div class="selected"> moves </div>
-  <div> items </div>
+	<div class="selected"> moves </div>
+	<div> items </div>
 </div>
 
 <script>
-  let name = "bulbasaur"  
-  let hp = 30
-  let isCaptured = false
+	let name = "bulbasaur"
+	let hp = 30
+	let isCaptured = false
 
-  let pokemonA = {
-    name: "charizard",
-    hp: 201,
-    level: 68,
-    attack: 100,
-    defense:90,
-  }
-  let pokemonB = {
-    name: "gengar",
-    hp: 189,
-    level: 65,
-    attack: 100,
-    defense: 80,
+	let pokemonA = {
+		name: "charizard",
+		hp: 201,
+		level: 68,
+		attack: 100,
+		defense: 90,
+	}
+	let pokemonB = {
+		name: "gengar",
+		hp: 189,
+		level: 65,
+		attack: 100,
+		defense: 80,
+	}
+
+	let pokemonC = {
+		name: "Slowbro",
+		hp: 240,
+		level: 70,
+		attack: 200,
+		defense: 10,
+	}
+
+	let attack = function (damageAmount) {
+		return "dealt " + damageDealt(pokemonC, pokemonB) + " damage"
+	}
+
+  let toaster = function(keyboardEvent) {
+    console.log(keyboardEvent);
+
+    let charmander = {
+      name: 'charmander',
+      hp: 5,
+      level: keyboardEvent,
+    }
+
+    let squirtle = {
+      name: 'squirtle',
+      hp: 5,
+      level: keyboardEvent,
+    }
+
+    if (keyboardEvent.key == 'ArrowUp') {
+      console.log(squirtle)
+      return squirtle;
+    }
+
+    console.log(charmander)
+    return charmander;
   }
 
-  let pokemonC = {
-    name: "Slowbro",
-    hp: 240,
-    level: 70,
-    attack: 200,
-    defense: 10,
+  let addTwoNums = function(n1, n2) {
+    return n1 + n2;
   }
 
-  let attack = function (damageAmount) {
-    return "dealt " + damageDealt(pokemonC, pokemonB) + " damage"
-  }
+	let damageDealt = function (a, b) {
+		return a.attack - b.defense
+	}
 
-  let damageDealt = function (a,b) {
-     return a.attack - b.defense
-  }
+	let pokemonAName = document.createElement("p")
+	pokemonAName.innerText = attack(pokemonA.attack)
+	document.body.appendChild(pokemonAName)
 
-  let pokemonAName = document.createElement("p")
-  pokemonAName.innerText = attack(pokemonA.attack)
-  document.body.appendChild(pokemonAName) 
-  
-  let pokemonBName = document.createElement("p")
-  pokemonBName.innerText = pokemonB.name + " " + pokemonB.hp
-  document.body.appendChild(pokemonBName)
+	let pokemonBName = document.createElement("p")
+	pokemonBName.innerText = pokemonB.name + " " + pokemonB.hp
+	document.body.appendChild(pokemonBName)
+
+    let handleKeypress = function (event) {
+        if (event.key == "ArrowDown") {
+            console.log (event)
+        }
+    }
+
+    document.body.addEventListener("keydown", toaster)
 </script>
 <p> bulbasaur </p>
