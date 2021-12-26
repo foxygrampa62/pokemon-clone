@@ -11,7 +11,7 @@
     div,
     p {
         font-family: 'Creepster', cursive;
-        color: green;
+        color: blue;
     }
 </style>
 
@@ -21,28 +21,125 @@
 </div>
 
 <script>
+
+    let flamethrower = {
+        name: "Flamethrower",
+        type: "fire",
+        effect: function(attacker, defender) {
+            defender.temp.hp -= calcSpecialDamage(attacker, defender, 80)
+        },
+        accuracy: 100,
+        pp: 15,
+    }
+
+    let calcPhysicalDamage = function(attacker, defender, attackPower) {
+        let attackStat = attacker.attack * attacker.temp.attack
+        let defenseStat = defender.defense * defender.temp.defense
+        let randomNumber = 85 // TODO randomize between 85 and 100
+        let STAB = 1.0 // TODO calculate stab
+        let weakness = 1.0 // TODO
+        let resistance = 1.0 // TODO
+        return ((((2 * attacker.level / 5 + 2) * attackStat * attackPower / defenseStat) / 50) + 2) * STAB * weakness / resistance * randomNumber / 100
+    }
+
+    let calcSpecialDamage = function(attacker, defender, attackPower) {
+        let attackStat = attacker.spAttack * attacker.temp.spAttack
+        let defenseStat = defender.spDefense * defender.temp.spDefense
+        let randomNumber = 85 // TODO randomize between 85 and 100
+        let STAB = 1.0 // TODO calculate stab
+        let weakness = 1.0 // TODO
+        let resistance = 1.0 // TODO
+        return ((((2 * attacker.level / 5 + 2) * attackStat * attackPower / defenseStat) / 50) + 2) * STAB * weakness / resistance * randomNumber / 100
+    }
+
+    let dragonClaw = {
+        name: "Dragon Claw",
+        type: "dragon",
+        category: "attack",
+        effect: function(attacker, defender) {
+            defender.temp.hp -= calcPhysicalDamage(attacker, defender, 80)
+        },
+        accuracy: 100,
+        pp: 15,
+    }
+
+    let smokescreen = {
+        name: "Smokescreen",
+        type: "normal",
+        effect: function(attacker, defender) {
+            if (defender.accuracy > 0.4) {
+                defender.accuracy -= 0.1;
+            }
+        },
+        accuracy: 100,
+        pp: 15,
+    }
+
+
+
+    let shadowball = {
+        name: "Shadow Ball",
+        type: "ghost",
+        effect: function(attacker, defender) {
+            defender.temp.hp -= calcSpecialDamage(attacker, defender, 80)
+        },
+        accuracy: 100,
+        pp: 15,
+    }
+
+    let temporaryStats = {
+        hp: 200,
+        acc: 100,
+        evasiveness: 1.0,
+        attack: 1.0,
+        defense: 1.0,
+        spAttack: 1.0,
+        spDefense: 1.0,
+        speed: 1.0,
+    }
+
     let charizard = {
         name: "charizard",
-        hp: 201,
-        level: 68,
-        attack: 100,
-        defense: 90,
+        type: ["fire", "flying"],
+        moves: [
+           flamethrower,
+           dragonClaw,
+           smokescreen,
+        ],
+        hp: 78,
+        attack: 84,
+        defense: 78,
+        spAttack: 109,
+        spDefense: 85,
+        speed: 100,
     }
-
+    
     let gengar = {
         name: "gengar",
-        hp: 189,
-        level: 65,
-        attack: 100,
-        defense: 80,
+        type: ["ghost", "poison"],
+        moves: [
+            shadowball,
+            smokescreen,
+        ],
+        hp: 60,
+        attack: 65,
+        defense: 60,
+        spAttack: 130,
+        spDefense: 75,
+        speed: 110,
     }
 
-    let startBattle = function (pokemonA, pokemonB) {
+    let teamA = [
+        charizard,
+    ]
+
+    let startBattle = function (teamA, teamB) {
         let battle = {
             isFinished: false,
-            pokemonA: pokemonA,
-            pokemonB,
+            teamA,
+            teamB,
         }
+
         return battle 
     }
 
