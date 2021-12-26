@@ -1,0 +1,66 @@
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+
+<style>
+  .selected {
+    color: red;
+    font-family: 'Creepster', cursive;
+  }
+  div, p {
+    font-family: 'Creepster', cursive;
+    color: green;
+  }
+</style>
+
+<div>
+  <div class="selected"> moves </div>
+  <div> items </div>
+</div>
+
+<script>
+  let name = "bulbasaur"  
+  let hp = 30
+  let isCaptured = false
+
+  let pokemonA = {
+    name: "charizard",
+    hp: 201,
+    level: 68,
+    attack: 100,
+    defense:90,
+  }
+  let pokemonB = {
+    name: "gengar",
+    hp: 189,
+    level: 65,
+    attack: 100,
+    defense: 80,
+  }
+
+  let pokemonC = {
+    name: "Slowbro",
+    hp: 240,
+    level: 70,
+    attack: 200,
+    defense: 10,
+  }
+
+  let attack = function (damageAmount) {
+    return "dealt " + damageDealt(pokemonC, pokemonB) + " damage"
+  }
+
+  let damageDealt = function (a,b) {
+     return a.attack - b.defense
+  }
+
+  let pokemonAName = document.createElement("p")
+  pokemonAName.innerText = attack(pokemonA.attack)
+  document.body.appendChild(pokemonAName) 
+  
+  let pokemonBName = document.createElement("p")
+  pokemonBName.innerText = pokemonB.name + " " + pokemonB.hp
+  document.body.appendChild(pokemonBName)
+</script>
+<p> bulbasaur </p>
