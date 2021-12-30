@@ -39,8 +39,10 @@
         let STAB = 1.0 // TODO calculate stab
         let weakness = 1.0 // TODO
         let resistance = 1.0 // TODO
-        return ((((2 * attacker.level / 5 + 2) * attackStat * attackPower / defenseStat) / 50) + 2) * STAB * weakness / resistance * randomNumber / 100
+        let damage = ((((2 * attacker.level / 5 + 2) * attackStat * attackPower / defenseStat) / 50) + 2) * STAB * weakness / resistance * randomNumber / 100
+        return Math.round(damage)
     }
+    
 
     let calcSpecialDamage = function (attacker, defender, attackPower) {
         let attackStat = attacker.spAttack * attacker.temp.spAttack
@@ -49,8 +51,10 @@
         let STAB = 1.0 // TODO calculate stab
         let weakness = 1.0 // TODO
         let resistance = 1.0 // TODO
-        return ((((2 * attacker.level / 5 + 2) * attackStat * attackPower / defenseStat) / 50) + 2) * STAB * weakness / resistance * randomNumber / 100
+        let damage = ((((2 * attacker.level / 5 + 2) * attackStat * attackPower / defenseStat) / 50) + 2) * STAB * weakness / resistance * randomNumber / 100
+        return Math.round(damage)
     }
+
 
     let dragonClaw = {
         name: "Dragon Claw",
