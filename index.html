@@ -93,6 +93,7 @@
     let charizard = {
         name: "charizard",
         type: ["fire", "flying"],
+        level: 50,
         moves: [
             flamethrower,
             dragonClaw,
@@ -109,6 +110,7 @@
     let gengar = {
         name: "gengar",
         type: ["ghost", "poison"],
+        level: 50,
         moves: [
             shadowball,
             smokescreen,
@@ -129,6 +131,19 @@
         gengar,
     ]
 
+    let defaultTempStats = function (pokemon) {
+        return {
+            hp: pokemon.hp,
+            acc: 100,
+            evasiveness: 1.0,
+            attack: 1.0,
+            defense: 1.0,
+            spAttack: 1.0,
+            spDefense: 1.0,
+            speed: 1.0,
+        }
+
+    }
     let startBattle = function (teamA, teamB) {
         let activeA = teamA[0]
         let activeB = teamB[0]
@@ -143,9 +158,15 @@
             activeA,
             activeB,
         }
-
+        console.log (battle)
+        let attacker = battle.activeA
+        let defender = battle.activeB
+        let chosenAttack = attacker.moves[0]
+        chosenAttack.effect (attacker, defender)
+        console.log (defender)
         return battle
     }
+    startBattle (teamA, teamB)
 
     // This is a comment, it doesn't do anything
     // let attack = function (damageAmount) {
@@ -164,19 +185,6 @@
     // pokemonBName.innerText = pokemonB.name + " " + pokemonB.hp
     // document.body.appendChild(pokemonBName)
 
-    let defaultTempStats = function (pokemon) {
-        return {
-            hp: pokemon.hp,
-            acc: 100,
-            evasiveness: 1.0,
-            attack: 1.0,
-            defense: 1.0,
-            spAttack: 1.0,
-            spDefense: 1.0,
-            speed: 1.0,
-        }
-
-    }
-
+ 
 </script>
 <p> bulbasaur </p>
