@@ -1,0 +1,10 @@
+.selected {
+    color: red;
+    font-family: 'Creepster', cursive;
+}
+
+div,
+p {
+    font-family: 'Creepster', cursive;
+    color: blue;
+}
