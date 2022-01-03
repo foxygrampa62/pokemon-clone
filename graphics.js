@@ -1,6 +1,13 @@
 
 let initializeGraphics = function (){
     let canvas = document.createElement("canvas")
+    canvas.setAttribute ("width", "400")
+    canvas.setAttribute ("height", "400")
+    let ctx = canvas.getContext ("2d")
+    ctx.beginPath();
+    ctx.rect(0, 0, 400, 400);
+    ctx.fillStyle = "white";
+    ctx.fill();
     document.body.appendChild(canvas)
 }
 let renderEnemySprite = function(pokemonID){
