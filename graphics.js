@@ -17,6 +17,6 @@ let renderEnemySprite = function(pokemonID){
     myImage.onload = function (){
         let canvas = document.querySelector ("canvas")
         let context = canvas.getContext("2d") 
-        context.drawImage (myImage, 50, 50, 50, 50)
+        context.drawImage (myImage, 250, 50, 150, 150)
     }
 }
